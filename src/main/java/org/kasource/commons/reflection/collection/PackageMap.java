@@ -1,45 +1,42 @@
 package org.kasource.commons.reflection.collection;
 
+import java.util.HashMap;
 import java.util.Map;
+
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * Wraps a map and resolves super packages of the key.
- * 
- * @author rikardwi
  *
  * @param <T> Content type of the map
+ * @author rikardwi
  **/
 public class PackageMap<T> {
 
-    private Map<String, T> map;
-    
-    public PackageMap() {}
-    
-    public PackageMap(Map<String, T> map) {
-        this.map = map;
+    private Map<String, T> map = new HashMap<>();
+
+    public PackageMap() {
     }
-    
-    
-    public T get(Class<?> clazz) {
-        return get(clazz.getName());
+
+    public PackageMap(final Map<String, T> map) {
+        this.map.putAll(map);
     }
-    
-    public T get(String packageOrClassName) {
-        if(map == null || map.isEmpty()) {
-            return null;
-        }
-        int index = packageOrClassName.lastIndexOf(".");
-        String packageName = packageOrClassName;
+
+
+    public T get(Class clazz) {
+        return get(clazz.getPackage().getName());
+    }
+
+    public T get(final String packagePath) {
+        String packageName = packagePath;
         T object = map.get(packageName);
-        
-        while (object == null && index > 0) {
-            packageName = packageName.substring(0, index);
+        String subPackageName = StringUtils.substringBeforeLast(packageName, ".");
+        while (object == null && !subPackageName.equals(packageName)) {
+            packageName = subPackageName;
             object = map.get(packageName);
-            index = packageName.lastIndexOf(".");
+            subPackageName = StringUtils.substringBeforeLast(packageName, ".");
         }
-        
         return object;
     }
-    
-    
+
 }

@@ -5,23 +5,14 @@ import java.util.Map;
 
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 
-import org.junit.Assert;
 import org.junit.Test;
-import org.kasource.commons.reflection.collection.PackageMap;
 
 public class PackageMapTest {
 
-    
-    @Test
-    public void getMapIsNull() {
-        
-        PackageMap<String> packageMap = new PackageMap<String>();
-        
-        Assert.assertNull("bind", packageMap.get(XmlAdapter.class));
-        
-    }
-    
+
     @Test
     public void get() {
         Map<String, String> map = new HashMap<String, String>();
@@ -29,8 +20,8 @@ public class PackageMapTest {
         map.put("javax.xml", "xml");
         map.put("javax.xml.bind", "bind");
         PackageMap<String> packageMap = new PackageMap<String>(map);
-        
-        Assert.assertEquals("bind", packageMap.get(XmlAdapter.class));
-        
+
+        assertThat(packageMap.get(XmlAdapter.class), equalTo("bind"));
+
     }
 }
