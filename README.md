@@ -5,7 +5,9 @@ Ka-Commons-Reflection
 ![](https://img.shields.io/badge/Repository-Maven%20Central-2396ad)  
 ![](https://img.shields.io/badge/Java-8%2B-d6a827)
 ![](https://github.com/wigforss/ka-commons-reflection/workflows/Test%20and%20Deploy/badge.svg) 
-![](https://img.shields.io/badge/coverage-80%25-brightgreen)
+[![codecov](https://codecov.io/gh/wigforss/ka-commons-reflection/branch/master/graph/badge.svg)](https://codecov.io/gh/wigforss/ka-commons-reflection)
+
+
 
 Reflection Utilities.
 
