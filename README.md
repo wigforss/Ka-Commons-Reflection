@@ -14,12 +14,12 @@ Reflection Utilities.
 ```
 <parent>
     <groupId>org.kasource.commons</groupId>
-  	<artifactId>ka-commons-reflection</artifactId>
+    <artifactId>ka-commons-reflection</artifactId>
     <version>2.0</version>
 </parent>
 ```
 
-The version 2.x requires Java 8 or greater, if an earlier version is used use the 1.x versions.
+The version 2.x requires Java 8 or greater, if an earlier version of Java is required  then use the 1.x versions of ka.commons-reflection.
 
 # Filters
 
