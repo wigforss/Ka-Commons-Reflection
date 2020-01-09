@@ -24,9 +24,9 @@ jobs:
       with:
         java-version: 1.8
     - name: Test
-      run: mvn -B clean verify -Drun.qa=true -s .github/maven/settings.xml
+      run: mvn -B clean verify -Drun.qa=true -Dmaven.buildNumber.skip=true -s .github/maven/settings.xml
     - name: Build and deploy
-      run: mvn -B package deploy -s .github/maven/settings.xml
+      run: mvn -B package deploy -DskipTests  -s .github/maven/settings.xml
       if: github.ref == 'refs/heads/master'
       env:
         MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
@@ -34,7 +34,7 @@ jobs:
         GPG_PWD: ${{ secrets.GPG_PWD }}
         GPG_KEY: ${{ secrets.GPG_KEY }}
     - name: Generate Coverage report
-      run: mvn cobertura:cobertura -P cobertura -s .github/maven/settings.xml
+      run: mvn jacoco:report -Dmaven.buildNumber.skip=true -P jacoco -s .github/maven/settings.xml
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1
       with:
