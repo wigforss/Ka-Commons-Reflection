@@ -36,6 +36,6 @@ jobs:
     - name: Generate Coverage report
       run: mvn cobertura:cobertura -P cobertura -s .github/maven/settings.xml
     - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v1
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
+      uses: codecov/codecov-action@v1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
