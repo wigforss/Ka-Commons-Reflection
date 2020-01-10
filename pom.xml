@@ -10,7 +10,7 @@
 	<groupId>org.kasource.commons</groupId>
 
 	<artifactId>ka-commons-reflection</artifactId>
-	<version>2.1</version>
+	<version>2.2-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>Ka Commons Reflection</name>
 
@@ -27,7 +27,7 @@
 		<connection>${scm.connection.url}</connection>
 		<developerConnection>${scm.connection.url}</developerConnection>
 		<url>${scm.url}</url>
-		<tag>ka-commons-reflection-2.1</tag>
+		<tag>HEAD</tag>
 	</scm>
   
 
